@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import CustomButton from '../custom-button/custom-button.component';
 import './cart-dropdown.styles.scss';
 import CartItem from '../cart-item/cart-item.component';
+import { selectCartItems } from '../../redux/cart/cart.selectors';
 
 const CartDropdown = ({cartItems}) => (
     <div className="cart-dropdown">
@@ -14,8 +15,9 @@ const CartDropdown = ({cartItems}) => (
     </div>
 );
 
-const mapStateToProsp = ({ cart: {cartItems}}) => ({
-    cartItems
+const mapStateToProsp = (state) => ({
+    //our cart-ddn comp-t won't get rerendered unnecessary
+    cartItems: selectCartItems(state)
 });
 
 export default connect(mapStateToProsp)(CartDropdown);
