@@ -10,13 +10,13 @@ export const selectCollections = createSelector(
 
 export const selectCollectionsForPreview = createSelector(
     [selectCollections],
-    (collections) => Object.keys(collections).map((key)=> collections[key])
+    (collections) => collections ? Object.keys(collections).map((key)=> collections[key]): []
 );
 
 //memoizing the return of the F, in case we call it again with the same param we won't rerurn it again, cause the result will be the same.
 export const selectCollection = memoize((collectionUrlParam) => 
     createSelector(
         [selectCollections],
-        (collections) => collections[collectionUrlParam]     
+        collections => (collections ? collections[collectionUrlParam] : null )
     )
 );
