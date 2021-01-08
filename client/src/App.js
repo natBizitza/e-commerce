@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import './App.css';
+import { GlobalStyle } from './global.styles';
 import {Route, Switch, Redirect} from 'react-router-dom';
 import HomePage from './pages/homepage/homepage.component';
 import ShopPage from './pages/shop/shop.component';
@@ -19,8 +19,9 @@ const App = ({ checkUserSession,currentUser }) => {
 
   return (
     <div>
-      {/* placing outside of the Switch, cause it will be always rendered besides what component Switch decides 
-      to render */}
+      <GlobalStyle/>
+        {/* placing outside of the Switch, cause it will be always rendered besides what component Switch decides 
+        to render */}
       <Header/>
       <Switch>
         <Route exact path='/' component={HomePage}/>
