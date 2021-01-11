@@ -4,7 +4,7 @@ import { getUserCartRef } from '../../firebase/firebase.utils';
 import { selectCurrentUser } from '../user/user.selectors';
 import { clearCart, setCartFromFirebase } from './cart.actions';
 import { selectCartItems } from './cart.selectors';
-import { CartActionTypes } from './cart.types';
+import CartActionTypes from './cart.types';
 
 export function* clearCartOnSignOut() {
     yield put(clearCart());
@@ -23,7 +23,7 @@ export function* updateCartInFirebase() {
     }
   }
   
-  export function* checkCartFromFirebase({ payload: user }) {
+export function* checkCartFromFirebase({ payload: user }) {
     const cartRef = yield getUserCartRef(user.id);
     const cartSnapshot = yield cartRef.get();
     yield put(setCartFromFirebase(cartSnapshot.data().cartItems));
