@@ -22,7 +22,7 @@ const invertedButtonStyles = css`
     border: none;
     }`;
 
-const getButtonSTyles = props => {
+const getButtonStyles = props => {
     if(props.isGoogleSignIn){
         return googleSignInStyles
     }
@@ -53,5 +53,6 @@ export const CustomButtonContainer = styled.button`
     cursor: pointer;
     display: flex;
     justify-content: center;
+    margin-top: auto;
     
-    ${getButtonSTyles}`;
+    ${getButtonStyles}`;
